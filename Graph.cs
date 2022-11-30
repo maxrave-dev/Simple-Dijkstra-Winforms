@@ -26,9 +26,6 @@ namespace dijkstra
     {
         public readonly int MAX_VERTICES = 30;
 
-        public string[] road = new string[100];
-        public string[] pathCheck = new string[100];
-        public Graphics graphic;
         public int n =0;
         int e;
         public int[,] adj;

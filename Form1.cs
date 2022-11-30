@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
@@ -143,14 +144,6 @@ namespace dijkstra
             else
             {
                 g.FindPaths($"{indexFirst}", rtbOutput);
-                for (int i = 0; i< g.road.Length; i++)
-                {
-                    if (i != indexFirst)
-                    {
-                        rtbOutput.Text += g.road[i];
-                        rtbOutput.Text += g.pathCheck[i];
-                    }
-                }
             }
         }
 
@@ -174,6 +167,26 @@ namespace dijkstra
         }
 
         private void rtbOutput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void msSource_Click(object sender, EventArgs e)
+        {
+            Process.Start(@"https://github.com/maxrave-dev/Simple-Dijkstra-Winforms");
+        }
+
+        private void msListMembers_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("1. Nguyễn Đức Tuấn Minh \n2. Nguyễn Thị Phương Thảo\n3. Lê Bá Kha\n4. Thân Trọng Đức", "Danh sách thành viên");
+        }
+
+        private void aboutUsToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }

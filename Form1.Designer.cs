@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.pnGraph = new System.Windows.Forms.Panel();
             this.lbInfo = new MaterialSkin.Controls.MaterialLabel();
             this.lbNumber = new MaterialSkin.Controls.MaterialLabel();
@@ -371,9 +372,9 @@
             // 
             this.rtbOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rtbOutput.Font = new System.Drawing.Font("Fira Code", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtbOutput.Location = new System.Drawing.Point(28, 415);
+            this.rtbOutput.Location = new System.Drawing.Point(28, 454);
             this.rtbOutput.Name = "rtbOutput";
-            this.rtbOutput.Size = new System.Drawing.Size(454, 246);
+            this.rtbOutput.Size = new System.Drawing.Size(454, 256);
             this.rtbOutput.TabIndex = 21;
             this.rtbOutput.Text = "";
             this.rtbOutput.TextChanged += new System.EventHandler(this.rtbOutput_TextChanged);
@@ -398,7 +399,7 @@
             this.btRun.Depth = 0;
             this.btRun.HighEmphasis = true;
             this.btRun.Icon = null;
-            this.btRun.Location = new System.Drawing.Point(181, 670);
+            this.btRun.Location = new System.Drawing.Point(160, 719);
             this.btRun.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btRun.MouseState = MaterialSkin.MouseState.HOVER;
             this.btRun.Name = "btRun";
@@ -416,9 +417,9 @@
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutUsToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(3, 718);
+            this.menuStrip1.Location = new System.Drawing.Point(3, 764);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1153, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1201, 24);
             this.menuStrip1.TabIndex = 24;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -435,14 +436,14 @@
             // msSource
             // 
             this.msSource.Name = "msSource";
-            this.msSource.Size = new System.Drawing.Size(180, 22);
+            this.msSource.Size = new System.Drawing.Size(164, 22);
             this.msSource.Text = "Mã nguôn";
             this.msSource.Click += new System.EventHandler(this.msSource_Click);
             // 
             // msListMembers
             // 
             this.msListMembers.Name = "msListMembers";
-            this.msListMembers.Size = new System.Drawing.Size(180, 22);
+            this.msListMembers.Size = new System.Drawing.Size(164, 22);
             this.msListMembers.Text = "Danh sách nhóm";
             this.msListMembers.Click += new System.EventHandler(this.msListMembers_Click);
             // 
@@ -450,7 +451,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1159, 745);
+            this.ClientSize = new System.Drawing.Size(1207, 791);
             this.Controls.Add(this.btRun);
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.rtbOutput);
@@ -473,6 +474,7 @@
             this.Controls.Add(this.pnGraph);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";

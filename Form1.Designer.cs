@@ -53,11 +53,8 @@
             this.rtbOutput = new System.Windows.Forms.RichTextBox();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.btRun = new MaterialSkin.Controls.MaterialButton();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.aboutUsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.msSource = new System.Windows.Forms.ToolStripMenuItem();
-            this.msListMembers = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1.SuspendLayout();
+            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
+            this.tbLast = new MaterialSkin.Controls.MaterialTextBox2();
             this.SuspendLayout();
             // 
             // pnGraph
@@ -178,7 +175,7 @@
             this.tbFirst.SelectionLength = 0;
             this.tbFirst.SelectionStart = 0;
             this.tbFirst.ShortcutsEnabled = true;
-            this.tbFirst.Size = new System.Drawing.Size(334, 48);
+            this.tbFirst.Size = new System.Drawing.Size(145, 48);
             this.tbFirst.TabIndex = 8;
             this.tbFirst.TabStop = false;
             this.tbFirst.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -372,7 +369,7 @@
             // 
             this.rtbOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rtbOutput.Font = new System.Drawing.Font("Fira Code", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtbOutput.Location = new System.Drawing.Point(28, 454);
+            this.rtbOutput.Location = new System.Drawing.Point(28, 415);
             this.rtbOutput.Name = "rtbOutput";
             this.rtbOutput.Size = new System.Drawing.Size(454, 256);
             this.rtbOutput.TabIndex = 21;
@@ -399,7 +396,7 @@
             this.btRun.Depth = 0;
             this.btRun.HighEmphasis = true;
             this.btRun.Icon = null;
-            this.btRun.Location = new System.Drawing.Point(160, 719);
+            this.btRun.Location = new System.Drawing.Point(178, 680);
             this.btRun.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btRun.MouseState = MaterialSkin.MouseState.HOVER;
             this.btRun.Name = "btRun";
@@ -412,46 +409,53 @@
             this.btRun.UseVisualStyleBackColor = true;
             this.btRun.Click += new System.EventHandler(this.btRun_Click);
             // 
-            // menuStrip1
+            // materialLabel2
             // 
-            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutUsToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(3, 764);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1201, 24);
-            this.menuStrip1.TabIndex = 24;
-            this.menuStrip1.Text = "menuStrip1";
+            this.materialLabel2.AutoSize = true;
+            this.materialLabel2.Depth = 0;
+            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel2.Location = new System.Drawing.Point(199, 211);
+            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel2.Name = "materialLabel2";
+            this.materialLabel2.Size = new System.Drawing.Size(113, 19);
+            this.materialLabel2.TabIndex = 24;
+            this.materialLabel2.Text = "Nhập điểm cuối";
             // 
-            // aboutUsToolStripMenuItem
+            // tbLast
             // 
-            this.aboutUsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.msSource,
-            this.msListMembers});
-            this.aboutUsToolStripMenuItem.Name = "aboutUsToolStripMenuItem";
-            this.aboutUsToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
-            this.aboutUsToolStripMenuItem.Text = "About us...";
-            this.aboutUsToolStripMenuItem.Click += new System.EventHandler(this.aboutUsToolStripMenuItem_Click);
-            // 
-            // msSource
-            // 
-            this.msSource.Name = "msSource";
-            this.msSource.Size = new System.Drawing.Size(164, 22);
-            this.msSource.Text = "Mã nguôn";
-            this.msSource.Click += new System.EventHandler(this.msSource_Click);
-            // 
-            // msListMembers
-            // 
-            this.msListMembers.Name = "msListMembers";
-            this.msListMembers.Size = new System.Drawing.Size(164, 22);
-            this.msListMembers.Text = "Danh sách nhóm";
-            this.msListMembers.Click += new System.EventHandler(this.msListMembers_Click);
+            this.tbLast.AnimateReadOnly = false;
+            this.tbLast.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.tbLast.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.tbLast.Depth = 0;
+            this.tbLast.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbLast.HideSelection = true;
+            this.tbLast.LeadingIcon = null;
+            this.tbLast.Location = new System.Drawing.Point(201, 233);
+            this.tbLast.MaxLength = 32767;
+            this.tbLast.MouseState = MaterialSkin.MouseState.OUT;
+            this.tbLast.Name = "tbLast";
+            this.tbLast.PasswordChar = '\0';
+            this.tbLast.PrefixSuffixText = null;
+            this.tbLast.ReadOnly = false;
+            this.tbLast.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.tbLast.SelectedText = "";
+            this.tbLast.SelectionLength = 0;
+            this.tbLast.SelectionStart = 0;
+            this.tbLast.ShortcutsEnabled = true;
+            this.tbLast.Size = new System.Drawing.Size(149, 48);
+            this.tbLast.TabIndex = 25;
+            this.tbLast.TabStop = false;
+            this.tbLast.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.tbLast.TrailingIcon = null;
+            this.tbLast.UseSystemPasswordChar = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1207, 791);
+            this.ClientSize = new System.Drawing.Size(1166, 725);
+            this.Controls.Add(this.tbLast);
+            this.Controls.Add(this.materialLabel2);
             this.Controls.Add(this.btRun);
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.rtbOutput);
@@ -472,7 +476,6 @@
             this.Controls.Add(this.lbNumber);
             this.Controls.Add(this.lbInfo);
             this.Controls.Add(this.pnGraph);
-            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -481,8 +484,6 @@
             this.Sizable = false;
             this.Text = "Dijkstra";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -515,10 +516,8 @@
         private System.Windows.Forms.RichTextBox rtbOutput;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialButton btRun;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem aboutUsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem msSource;
-        private System.Windows.Forms.ToolStripMenuItem msListMembers;
+        private MaterialSkin.Controls.MaterialLabel materialLabel2;
+        private MaterialSkin.Controls.MaterialTextBox2 tbLast;
     }
 }
 

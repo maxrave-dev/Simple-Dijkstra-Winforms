@@ -34,7 +34,8 @@ namespace dijkstra
         private readonly int PERMANENT = 2;
         private readonly int TEMPORARY = 1;
         private readonly int NIL = -1;
-        public List<PictureBox> listPoint = new List<PictureBox>();
+        public List<Point> listPoint = new List<Point>();
+        public List<Point> pathIndex = new List<Point>();
 
         public DirectedWeightedGraph()
         {
@@ -73,13 +74,13 @@ namespace dijkstra
 
         }
 
-        public void FindPaths(string source, RichTextBox rtbOutput)
+        public void FindPaths(string source, string last, RichTextBox rtbOutput)
         {
             int s = GetIndex(source);
             Dijkstra(s);
             rtbOutput.Text = "Đỉnh nguồn : " + (Convert.ToInt32(source) + 1)  + "\r\n\n";
 
-            for (int v = 0; v < n; v++)
+            int v = Convert.ToInt32(last);
             {
                 if (v != s)
                 {
@@ -121,6 +122,7 @@ namespace dijkstra
             rtbOutput.Text += "\t Đường đi ngắn nhất: ";
             for (i = count; i >= 1; i--)
             {
+                pathIndex.Add(listPoint[path[i]]);
                 rtbOutput.Text += " => "+(path[i] + 1);
             }
             rtbOutput.Text += "\n\t Khoảng cách ngắn nhất: " + sd + "\n";
@@ -192,17 +194,12 @@ namespace dijkstra
             }
             for (int i = 0; i < n; i++)
             {
-                var location = new Point(x[i], y[i]);
-                PictureBox point = new PictureBox();
-                point.Image = Image.FromFile(Application.StartupPath + @"\Resources\Point.png");
-                point.Size = new Size(20, 20);
-                point.SizeMode = PictureBoxSizeMode.StretchImage;
-                point.BackColor = Color.Transparent;
-                point.Location = location;
-                pnGraph.Controls.Add(point);
+                Point point = new Point(x[i], y[i]);
                 listPoint.Add(point);
-                ToolTip toolTipPoint = new ToolTip();
-                toolTipPoint.SetToolTip(point, $"Điểm thứ {Convert.ToInt32(vertexList[i].name) + 1}");
+                SolidBrush brush = new SolidBrush(Color.Blue);
+                Brush pointName = new SolidBrush(Color.White);
+                graph.FillEllipse(brush, x[i], y[i], 20, 20);
+                graph.DrawString($"{i + 1}", new Font("Fira Code", 8), pointName, x[i] + 3, y[i] + 3);
             }
         }
     }

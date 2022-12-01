@@ -43,6 +43,7 @@ namespace dijkstra
 
         private int number = 0; 
         public int indexFirst = -1;
+        public int indexLast = -1;
         DirectedWeightedGraph g = new DirectedWeightedGraph();
         private Graphics graphic;
         private void Dijkstra_Core()
@@ -77,30 +78,30 @@ namespace dijkstra
         {
             number = 0;
             indexFirst = -1;
+            indexLast = -1;
             tbNumber.Text = "";
             g.listPoint.Clear();
             g.n = 0;
+            g.pathIndex.Clear();
             pnGraph.Controls.Clear();
             pnGraph.Refresh();
             rtbOutput.Clear();
             MessageBox.Show("Bạn đã reset thành công!","Cảnh báo!");
 
         }
-        public void DrawArrowLine(int a, int b, Graphics graphic)
+        public void DrawArrowLine(int a, int b)
         {
             Pen p = new Pen(Color.Black, 2);
             //p.CustomEndCap = new AdjustableArrowCap(5, 5);
-            Point point1 = new Point(g.listPoint[a].Location.X + 10, g.listPoint[a].Location.Y + 10);
-            Point point2 = new Point(g.listPoint[b].Location.X + 2 , g.listPoint[b].Location.Y + 2);
+            Point point1 = new Point(g.listPoint[a].X + 10, g.listPoint[a].Y + 10);
+            Point point2 = new Point(g.listPoint[b].X + 2 , g.listPoint[b].Y + 2);
             graphic.DrawLine(p, point1, point2);
             double angle = Math.Atan2(point2.Y - point1.Y, point2.X - point1.X);
             Point point3 = new Point((int)(point2.X - 10 * Math.Cos(angle - Math.PI / 6)), (int)(point2.Y - 10 * Math.Sin(angle - Math.PI / 6)));
             Point point4 = new Point((int)(point2.X - 10 * Math.Cos(angle + Math.PI / 6)), (int)(point2.Y - 10 * Math.Sin(angle + Math.PI / 6)));
-            graphic = pnGraph.CreateGraphics();
             graphic.DrawLine(p, point2, point3);
             graphic.DrawLine(p, point2, point4);
             graphic.DrawString($"{g.adj[a, b]}", new Font("Fira Code", 12), Brushes.Black, new Point((point1.X + point2.X) / 2, (point1.Y + point2.Y) / 2));
-            graphic.Dispose();
         }
 
         private void btAdd_Click(object sender, EventArgs e)
@@ -111,7 +112,7 @@ namespace dijkstra
             if (x == true && y == true && z == true && from < number + 1 && to < number+ 1)
             {
                 g.InsertEdge($"{from - 1}", $"{to - 1}", weight);
-                DrawArrowLine(from - 1, to - 1, graphic);
+                DrawArrowLine(from - 1, to - 1);
                 MessageBox.Show("Bạn đã thêm đường thành công!", "Cảnh báo!");
             }
             else
@@ -143,8 +144,27 @@ namespace dijkstra
             }
             else
             {
-                g.FindPaths($"{indexFirst}", rtbOutput);
+                g.FindPaths($"{indexFirst}",$"{indexLast}", rtbOutput);
+                for (int i = 0; i < g.pathIndex.Count - 1; i++)
+                {
+                    DrawPathLine(i);
+                }
             }
+        }
+
+        private void DrawPathLine(int i)
+        {
+            Pen p = new Pen(Color.Aqua, 2);
+            //p.CustomEndCap = new AdjustableArrowCap(5, 5);
+            Point point1 = new Point(g.pathIndex[i].X + 10, g.pathIndex[i].Y + 10);
+            Point point2 = new Point(g.pathIndex[i+1].X + 2, g.pathIndex[i+1].Y + 2);
+            graphic.DrawLine(p, point1, point2);
+            double angle = Math.Atan2(point2.Y - point1.Y, point2.X - point1.X);
+            Point point3 = new Point((int)(point2.X - 10 * Math.Cos(angle - Math.PI / 6)), (int)(point2.Y - 10 * Math.Sin(angle - Math.PI / 6)));
+            Point point4 = new Point((int)(point2.X - 10 * Math.Cos(angle + Math.PI / 6)), (int)(point2.Y - 10 * Math.Sin(angle + Math.PI / 6)));
+            graphic.DrawLine(p, point2, point3);
+            graphic.DrawLine(p, point2, point4);
+            
         }
 
         private void lbFirstLast_Click(object sender, EventArgs e)
@@ -155,9 +175,12 @@ namespace dijkstra
         private void btFirst_Click(object sender, EventArgs e)
         {
             bool x = Int32.TryParse(tbFirst.Text, out int check1);
-            if (x == true && check1 < number + 1)
+            bool y = Int32.TryParse(tbLast.Text, out int check2);
+            if (x == true && y == true && check1 < number + 1 && check2 < number +1 )
             {
                 indexFirst = check1 - 1;
+                indexLast = check2 - 1;
+                DrawFirstLast(indexFirst, indexLast);
                 MessageBox.Show("Bạn đã chọn điểm bắt đầu thành công!", "Cảnh báo!");
             }
             else
@@ -186,9 +209,18 @@ namespace dijkstra
             MessageBox.Show("1. Nguyễn Đức Tuấn Minh \n2. Nguyễn Thị Phương Thảo\n3. Lê Bá Kha\n4. Thân Trọng Đức", "Danh sách thành viên");
         }
 
-        private void aboutUsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void DrawFirstLast(int indexFirst, int indexLast)
         {
-
+            SolidBrush brushFirst = new SolidBrush(Color.LawnGreen);
+            SolidBrush brushLast = new SolidBrush(Color.Red);
+            Brush pointName = new SolidBrush(Color.White);
+            Point firstPoint = g.listPoint[indexFirst];
+            Point lastPoint = g.listPoint[indexLast];
+            Graphics graph = pnGraph.CreateGraphics();
+            graph.FillEllipse(brushFirst, firstPoint.X, firstPoint.Y, 20, 20);
+            graph.FillEllipse(brushLast, lastPoint.X, lastPoint.Y, 20, 20);
+            graph.DrawString($"{indexFirst + 1}", new Font("Fira Code", 8), pointName, firstPoint.X + 3, firstPoint.Y + 3);
+            graph.DrawString($"{indexLast + 1}", new Font("Fira Code", 8), pointName, lastPoint.X + 3, lastPoint.Y + 3);
         }
     }
 }
